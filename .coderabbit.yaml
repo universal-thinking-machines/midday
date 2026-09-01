@@ -1,0 +1,16 @@
+# CodeRabbit spend control — reviews are strictly opt-in.
+#
+# CodeRabbit bills per file per review pass, and by default reviews every
+# push to every pull request. This config makes the review:coderabbit label
+# the only automatic trigger, and stops automatic re-reviews on subsequent
+# pushes even on labelled pull requests (re-review is requested manually at
+# a fix round's final head, per the review policy). A manual
+# `@coderabbitai review` comment still works anywhere for a deliberate
+# one-off. Do not remove this file without checking the review budget.
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+    labels:
+      - "review:coderabbit"
+  auto_incremental_review: false
