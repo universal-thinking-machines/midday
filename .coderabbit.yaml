@@ -1,16 +1,19 @@
-# CodeRabbit spend control — reviews are strictly opt-in.
+# CodeRabbit spend control — reviews are strictly opt-in (org standard,
+# aligned with dpobench/privacy-foundry, rolled out 2026-09-01).
 #
-# CodeRabbit bills per file per review pass, and by default reviews every
-# push to every pull request. This config makes the review:coderabbit label
-# the only automatic trigger, and stops automatic re-reviews on subsequent
-# pushes even on labelled pull requests (re-review is requested manually at
-# a fix round's final head, per the review policy). A manual
-# `@coderabbitai review` comment still works anywhere for a deliberate
-# one-off. Do not remove this file without checking the review budget.
+# CodeRabbit bills per file per review pass, and with no config it reviews
+# every push to every pull request. auto_review is disabled; a review runs
+# only for a pull request carrying the review:coderabbit label or an
+# explicit `@coderabbitai review` command, and never re-reviews per push.
+# Do not remove this file without checking the review budget.
+language: "en-US"
+early_access: false
 reviews:
+  request_changes_workflow: false
   auto_review:
-    enabled: true
-    drafts: false
+    enabled: false
     labels:
       - "review:coderabbit"
-  auto_incremental_review: false
+      - "!coderabbit:ignore"
+    auto_incremental_review: false
+    drafts: false
